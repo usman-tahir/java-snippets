@@ -11,6 +11,27 @@ task hello << {
     println "Hello World!"
 }
 
+// Dependent tasl
+task intro(dependsOn: hello) << {
+    println "I'm Gradle"
+}
+
+// Lazy dependsOn: The tasks have not been defined yet
+task taskX(dependsOn: "taskY") {
+    println "taskX"
+}
+
+task taskY << {
+    println "taskY"
+}
+
+// Dynamic tasks
+4.times { counter ->
+    task "task$counter" << {
+        println "I'm task number $counter"
+    }
+}
+
 task upper << {
     String string = "Hello World!"
     println "Original: " + string
