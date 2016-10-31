@@ -6,6 +6,20 @@ task hello {
 }
 */
 
+defaultTasks 'clean', 'run'
+
+task clean << {
+    println 'Default cleaning'
+}
+
+task run << {
+    println 'Default running'
+}
+
+task other << {
+    println 'I am not a default task'
+}
+
 // Task definition shortcut
 task hello << {
     println "Hello World!"
@@ -16,12 +30,13 @@ hello.doLast {
     println "Greetings from the $hello.name task."
 }
 
-// Dependent tasl
+// Dependent task
 task intro(dependsOn: hello) << {
     println "I'm Gradle"
 }
 
 // Lazy dependsOn: The tasks have not been defined yet
+/*
 task taskX(dependsOn: "taskY") {
     println "taskX"
 }
@@ -29,6 +44,7 @@ task taskX(dependsOn: "taskY") {
 task taskY << {
     println "taskY"
 }
+*/
 
 // Dynamic tasks
 4.times { counter ->
@@ -67,4 +83,12 @@ task count << {
     4.times {
         print "$it "
     }
+}
+
+task myTask {
+    ext.myProperty = "myValue"
+}
+
+task printTaskProperties << {
+    println myTask.myProperty
 }
