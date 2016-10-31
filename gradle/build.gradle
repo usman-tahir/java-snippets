@@ -11,6 +11,11 @@ task hello << {
     println "Hello World!"
 }
 
+// Shortcut notations
+hello.doLast {
+    println "Greetings from the $hello.name task."
+}
+
 // Dependent tasl
 task intro(dependsOn: hello) << {
     println "I'm Gradle"
@@ -30,6 +35,26 @@ task taskY << {
     task "task$counter" << {
         println "I'm task number $counter"
     }
+}
+
+// Manipulating existing tasks
+task0.dependsOn task1, task2, task3
+
+// Accessing a task via API (adding behavior)
+task helloEarth << {
+    println "Hello Earth"
+}
+
+helloEarth.doFirst {
+    println "Hello Venus"
+}
+
+helloEarth.doLast {
+    println "Hello Mars"
+}
+
+helloEarth << {
+    println "Hello Jupiter"
 }
 
 task upper << {
