@@ -1,5 +1,24 @@
+/*
 task hello {
     doLast {
         println "Hello World!"
+    }
+}
+*/
+
+// Task definition shortcut
+task hello << {
+    println "Hello World!"
+}
+
+task upper << {
+    String string = "Hello World!"
+    println "Original: " + string
+    println "Uppercase: " + string.toUpperCase()
+}
+
+task count << {
+    4.times {
+        print "$it "
     }
 }
