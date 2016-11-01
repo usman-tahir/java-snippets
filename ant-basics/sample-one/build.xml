@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 <project name="Hello World Project" default="info">
+  <property name="sitename" value="https://github.com/usman-tahir/java-snippets/tree/master/ant-basics/sample-one"></property>
   <target name="info">
     <echo>Hello World - Welcome to Apache ANT!</echo>
+    <echo>Apache ANT version is: ${ant.version}</echo>
+    <echo>You are currently viewing this from: ${sitename}</echo>
   </target>
 </project>
