@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<project name="helloworld" basedir="." default="build">
+  <property name="src.dir" value="src"/>
+  <property name="build.dir" value="dist"/>
+
+  <path id="master-classpath">
+    <fileset dir="dist">
+      <include name="*.class"/>
+    </fileset>
+    <pathelement path="${build.dir}"/>
+  </path>
+
+  <target name="build" description="Compile Java source (.java) files">
+    <mkdir dir="${build.dir}"/>
+    <javac destdir="${build.dir}" source="1.8" target="1.8">
+      <src path="${src.dir}"/>
+      <classpath refid="master-classpath"/>
+    </javac>
+  </target>
+</project>
