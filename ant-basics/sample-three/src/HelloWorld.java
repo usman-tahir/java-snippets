@@ -1,9 +1,15 @@
+import org.apache.tools.ant.Project;
 
 public class HelloWorld {
+    private Project project;
+
+    public void setProject(Project p) {
+        this.project = p;
+    }
+
     public void execute() {
-        System.out.println("Hello, World!");
+        String message = project.getProperty("ant.project.name");
+        project.log("Here is the project '" + message + "'. ", Project.MSG_INFO);
     }
-    public static void main(String[] args) {
-        // System.out.println("Hello, World!");
-    }
+    
 }
