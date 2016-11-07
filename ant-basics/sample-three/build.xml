@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<project name="MyTask" basedir="." default="jar">
+
+    <property name="src.dir" value="src"/>
+    <property name="dist.dir" value="dist"/>
+
+    <target name="clean" description="Delete all compiled/generated files">
+        <delete dir="$(dist.dir}" failonerror="false"/>
+        <delete file="${ant.project.name}.jar"/>
+    </target>
+
+    <target name="compile" description="Compiles the task" depends="clean">
+        <mkdir dir="${dist.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${dist.dir}"/>
+    </target>
+
+    <target name="jar" description="JARs the task" depends="compile">
+        <jar destfile="MyTask.jar" basedir="${dist.dir}"/>
+    </target>
+
+    <target name="use" description="Use the task" depends="jar">
+        <taskdef name="helloworld" classname="HelloWorld" classpath="${ant.project.name}.jar"/>
+        <helloworld/>
+    </target>
+</project>
